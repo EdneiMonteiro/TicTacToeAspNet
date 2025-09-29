@@ -1,12 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TicTacToe.Domain;
+using TicTacToe.Domain.AI;
 
 namespace TicTacToe.Web.Pages;
 
 public class IndexModel : PageModel
 {
     private const string SessionKey = "tictactoe.game";
+    private readonly IAiPlayer _aiPlayer;
+
+    public IndexModel(IAiPlayer aiPlayer)
+    {
+        _aiPlayer = aiPlayer;
+    }
 
     public GameStatus Status { get; private set; }
     public Player CurrentPlayer { get; private set; }
@@ -22,10 +29,30 @@ public class IndexModel : PageModel
     public IActionResult OnPostMove(int row, int col)
     {
         var game = GetGame();
+        
+        // Fazer jogada do humano
         if (!game.MakeMove(new Move(row, col), out var err))
         {
             Error = err;
+            SaveGame(game);
+            LoadFrom(game);
+            return Page();
         }
+
+        // Se o jogo ainda está em progresso e é vez da IA (Player.O)
+        if (game.Status == GameStatus.InProgress && game.CurrentPlayer == Player.O)
+        {
+            // Fazer jogada da IA
+            var board = BoardConverter.ToCharArray(game.Board);
+            var aiMove = _aiPlayer.GetBestMove(board, 'O');
+            
+            if (aiMove >= 0)
+            {
+                var aiMoveCoords = BoardConverter.ToMoveCoords(aiMove);
+                game.MakeMove(aiMoveCoords, out _); // IA sempre faz jogadas válidas
+            }
+        }
+
         SaveGame(game);
         LoadFrom(game);
         return Page();

@@ -1,8 +1,11 @@
+using TicTacToe.Domain.AI;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSession();
+builder.Services.AddScoped<IAiPlayer, MinimaxAi>();
 
 var app = builder.Build();
 
