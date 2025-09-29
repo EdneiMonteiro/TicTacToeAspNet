@@ -1,10 +1,1 @@
-﻿namespace TicTacToe.Tests;
-
-public class UnitTest1
-{
-    [Fact]
-    public void Test1()
-    {
-
-    }
-}
+﻿// Arquivo de teste placeholder removido. Os testes reais estão em GameServiceTests.cs.
