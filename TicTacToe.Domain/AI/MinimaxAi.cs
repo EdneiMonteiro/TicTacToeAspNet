@@ -1,5 +1,8 @@
 namespace TicTacToe.Domain.AI;
 
+/// <summary>
+/// Implementação de IA usando o algoritmo Minimax para jogar de forma ótima no jogo da velha.
+/// </summary>
 public class MinimaxAi : IAiPlayer
 {
     public int GetBestMove(char[] board, char aiMark)

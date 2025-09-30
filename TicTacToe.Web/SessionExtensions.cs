@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace TicTacToe.Web;
 
+/// <summary>
+/// Métodos de extensão para serializar e desserializar objetos na sessão HTTP.
+/// </summary>
 public static class SessionExtensions
 {
     public static void SetObject<T>(this ISession session, string key, T value) =>

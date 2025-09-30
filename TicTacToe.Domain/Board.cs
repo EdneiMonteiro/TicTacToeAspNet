@@ -1,5 +1,8 @@
 namespace TicTacToe.Domain;
 
+/// <summary>
+/// Representa o tabuleiro 3x3 do jogo da velha, gerenciando as células e verificando vitórias.
+/// </summary>
 public class Board
 {
     public const int Size = 3;
