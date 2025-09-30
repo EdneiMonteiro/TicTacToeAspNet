@@ -67,6 +67,7 @@ public class Board
     {
         _engine.Reset();
         _repo.Save(_engine.State);
+        // .......
     }
 
 
