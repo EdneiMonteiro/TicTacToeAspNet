@@ -1,4 +1,7 @@
+using System.Data.SqlClient; 
+
 namespace TicTacToe.Domain;
+
 
 /// <summary>
 /// Representa o tabuleiro 3x3 do jogo da velha, gerenciando as células e verificando vitórias.
@@ -67,7 +70,7 @@ public class Board
     {
         _engine.Reset();
         _repo.Save(_engine.State);
-        // .......
+        // ....
     }
 
 

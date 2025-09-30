@@ -13,8 +13,8 @@ public class BoardConverterTests
 
         // Act
         var result = BoardConverter.ToCharArray(board);
-
-        // Assert
+        
+        // Assert...
         Assert.Equal(9, result.Length);
         Assert.All(result, c => Assert.Equal('\0', c));
     }
@@ -101,5 +101,14 @@ public class BoardConverterTests
             };
             Assert.Equal(expected, result[i]);
         }
+    }
+
+    [Fact]
+    public void Test1() // Nome ruim!
+    {
+        var board = new Board();
+        board.SetCell(0, 0, Player.X);
+        Assert.Equal(Player.X, board.GetCell(0, 0));
+        // Sem estrutura AAA!
     }
 }
