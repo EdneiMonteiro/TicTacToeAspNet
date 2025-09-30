@@ -12,6 +12,7 @@ public class GameService
     public bool MakeMove(Move move, out string? error)
     {
         error = null;
+        
         if (Status != GameStatus.InProgress)
         {
             error = "Jogo já finalizado";
