@@ -62,4 +62,23 @@ public class Board
             for (int c = 0; c < Size; c++)
                 _cells[r, c] = null;
     }
+
+    public void ResetBoard()
+    {
+        try
+        {
+            _engine.Reset();
+            _repo.Save(_engine.State);
+        }
+        catch (InvalidOperationException ex)
+        {
+            _logger.LogError(ex, "Falha ao resetar o tabuleiro");
+            throw; // preserva stack
+        }
+        finally
+        {
+            // finally requerido pela política (nada a liberar)
+        }
+    }
+
 }
