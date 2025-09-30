@@ -1,5 +1,8 @@
 namespace TicTacToe.Domain.AI;
 
+/// <summary>
+/// Classe utilitária para conversão entre representações de tabuleiro e coordenadas.
+/// </summary>
 public static class BoardConverter
 {
     public static char[] ToCharArray(Board board)

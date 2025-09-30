@@ -1,5 +1,8 @@
 namespace TicTacToe.Domain;
 
+/// <summary>
+/// Serviço principal que gerencia o estado e as regras do jogo da velha.
+/// </summary>
 public class GameService
 {
     public Board Board { get; } = new();

@@ -5,6 +5,9 @@ using TicTacToe.Domain.AI;
 
 namespace TicTacToe.Web.Pages;
 
+/// <summary>
+/// Model da página principal que gerencia o jogo da velha, incluindo jogadas do usuário e da IA.
+/// </summary>
 public class IndexModel : PageModel
 {
     private const string SessionKey = "tictactoe.game";
@@ -95,7 +98,9 @@ public class IndexModel : PageModel
     }
 }
 
-// DTO para serializar estado do jogo na sessão
+/// <summary>
+/// DTO para serializar estado do jogo na sessão.
+/// </summary>
 public record GameSnapshot(Player CurrentPlayer, GameStatus Status, Player?[][] Cells)
 {
     public static GameSnapshot From(GameService g)
