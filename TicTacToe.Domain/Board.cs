@@ -65,7 +65,20 @@ public class Board
 
     public void ResetBoard()
     {
-        _engine.Reset();
-        _repo.Save(_engine.State);
+        try
+        {
+            _engine.Reset();
+            _repo.Save(_engine.State);
+        }
+        catch (InvalidOperationException ex)
+        {
+            _logger.LogError(ex, "Falha ao resetar o tabuleiro");
+            throw; // preserva stack
+        }
+        finally
+        {
+            // finally requerido pela política (nada a liberar)
+        }
     }
+
 }
