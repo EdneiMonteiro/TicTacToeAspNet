@@ -8,7 +8,7 @@ public class BoardConverterTests
     [Fact]
     public void ToCharArray_DeveConverterTabuleiroVazio()
     {
-        // Arrange
+        // Arrange.
         var board = new Board();
 
         // Act
