@@ -62,4 +62,10 @@ public class Board
             for (int c = 0; c < Size; c++)
                 _cells[r, c] = null;
     }
+
+    public void ResetBoard()
+    {
+        _engine.Reset();
+        _repo.Save(_engine.State);
+    }
 }
